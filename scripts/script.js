@@ -103,11 +103,8 @@
     }
 
     function isListMode() {
-        // Should use `URLSearchParams` but modern browser support is poor.
-        return (
-            url.search.indexOf('?full') !== -1 ||
-            url.search.indexOf('&full') !== -1
-        );
+        const params = new URLSearchParams(window.location.search);
+        return params.get('full') === 'true';
     }
 
     function normalizeSlideNumber(slideNumber) {
